@@ -1,0 +1,13 @@
+check,value
+Bootstrap: max repricing error of par bonds (per 100),2.842170943040401e-14
+NSS fit: RMSE vs bootstrapped zeros (bp),3.6720046508444577
+NSS fit: max absolute error (bp),8.639428271197854
+Liabilities: Macaulay duration (analytic),10.155900081413565
+Liabilities: effective duration (finite difference),10.155904899304215
+Liabilities: sum of key-rate dollar durations / dollar duration,0.9999997865675828
+Hull-White martingale test: max |z-score| over 50 maturities,1.268149382378835
+"Hull-White: E[D(0,5) P(5,10)] / P(0,10) (z-score 0.57)",1.0003225564573113
+"Hull-White: E[D(0,5) P(5,20)] / P(0,20) (z-score 0.55)",1.0004632929106974
+"Hull-White: E[D(0,5) P(5,30)] / P(0,30) (z-score 0.54)",1.000502187761207
+Hull-White calibration: mean reversion a,0.11698817084773504
+Hull-White calibration: volatility sigma,0.00718910473981955

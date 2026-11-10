@@ -1,0 +1,68 @@
+Valuation date 2021-12-31: NSS params [ 0.00000e+00 -1.70000e-03  1.87000e-02  6.22000e-02  1.86210e+00
+  1.65976e+01]
+Liabilities PV 1,425.8m, effective duration 10.16, convexity 154.1; assets 1,568.3m
+
+Validation
+                                                          check        value
+          Bootstrap: max repricing error of par bonds (per 100) 2.842171e-14
+                       NSS fit: RMSE vs bootstrapped zeros (bp) 3.672005e+00
+                               NSS fit: max absolute error (bp) 8.639428e+00
+                      Liabilities: Macaulay duration (analytic) 1.015590e+01
+            Liabilities: effective duration (finite difference) 1.015590e+01
+Liabilities: sum of key-rate dollar durations / dollar duration 9.999998e-01
+   Hull-White martingale test: max |z-score| over 50 maturities 1.268149e+00
+         Hull-White: E[D(0,5) P(5,10)] / P(0,10) (z-score 0.57) 1.000323e+00
+         Hull-White: E[D(0,5) P(5,20)] / P(0,20) (z-score 0.55) 1.000463e+00
+         Hull-White: E[D(0,5) P(5,30)] / P(0,30) (z-score 0.54) 1.000502e+00
+                       Hull-White calibration: mean reversion a 1.169882e-01
+                       Hull-White calibration: volatility sigma 7.189105e-03
+
+PCA
+component  explained_monthly  explained_annual  annual_sd_of_score  shock_99_5_normal  shock_99_5_empirical_up  shock_99_5_empirical_down
+    level            0.80725           0.88262             0.03001            0.07730                  0.07780                   -0.07937
+    slope            0.14953           0.10628             0.01041            0.02682                  0.02635                   -0.02488
+curvature            0.02689           0.00884             0.00300            0.00773                  0.00778                   -0.00684
+
+Balance sheet
+               strategy       assets  liabilities      surplus  asset_duration  liability_duration  dollar_duration_gap  asset_convexity  liability_convexity
+    Short: 5-year bonds 1.568327e+09 1.425751e+09 1.425751e+08           5.000              10.156        -6.638163e+09           25.000               154.11
+Duration-matched bullet 1.568327e+09 1.425751e+09 1.425751e+08           9.233              10.156         2.057137e+03           85.242               154.11
+       Barbell 2y + 30y 1.568327e+09 1.425751e+09 1.425751e+08           9.233              10.156         1.824557e+04          235.445               154.11
+       Key-rate matched 1.568327e+09 1.425751e+09 1.425751e+08           9.233              10.156        -3.058231e+03          139.446               154.11
+
+Key-rate dollar durations (per 1.00 rate change, million)
+          liabilities  Short: 5-year bonds  Duration-matched bullet  Barbell 2y + 30y  Key-rate matched
+key_rate                                                                                               
+1.0              98.1                  0.0                      0.0               0.0              98.1
+2.0             493.9                  0.0                      0.0            2326.4             493.9
+5.0            1845.3               7841.6                   2222.2               0.0            1845.3
+10.0           4973.9                  0.0                  12257.6               0.0            4973.9
+20.0           5341.5                  0.0                      0.0               0.0            5341.5
+30.0           1727.2                  0.0                      0.0           12153.4            1727.2
+
+Surplus change under shocks (million)
+                                         change_in_liabilities  Short: 5-year bonds  Duration-matched bullet  Barbell 2y + 30y  Key-rate matched
+shock                                                                                                                                           
+Parallel +100bp                                        -134.46                57.98                    -3.85              6.43             -0.07
+Parallel -100bp                                         156.51               -76.10                    -4.82              8.72             -0.03
+Steepener (-50bp at 1y to +50bp at 30y)                   2.68                25.97                    28.93            -48.23              0.21
+Flattener (+50bp at 1y to -50bp at 30y)                  -1.24               -26.90                   -29.75             56.02              0.23
+PCA level, 1-in-200 down                                303.65              -109.78                   -22.15             40.22              0.68
+PCA slope, 1-in-200 flattening                          194.71              -113.13                    -0.23             -1.12             -1.60
+PCA curvature, 1-in-200                                 -40.08                40.42                    -5.13              7.96              0.61
+
+PCA 1-in-200 surplus loss
+               strategy  surplus_loss_99_5  as_share_of_surplus
+    Short: 5-year bonds       1.729498e+08               1.2130
+Duration-matched bullet       2.602423e+07               0.1825
+       Barbell 2y + 30y       1.888009e+07               0.1324
+       Key-rate matched       1.910334e+06               0.0134
+
+Hull-White one-year surplus
+               strategy  surplus_mean_t1  surplus_p0_5_t1  prob_surplus_negative
+    Short: 5-year bonds     1.431540e+08     1.113150e+08                    0.0
+Duration-matched bullet     1.431511e+08     1.155126e+08                    0.0
+       Barbell 2y + 30y     1.431512e+08     1.032243e+08                    0.0
+       Key-rate matched     1.431514e+08     1.429222e+08                    0.0
+
+Key-rate matched notionals: [ 98.5 250.7 392.5 582.1 391.2 103.7] cash 32.2m; bullet maturity 9.23y; barbell 30y weight 0.258
