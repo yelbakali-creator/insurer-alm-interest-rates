@@ -1,5 +1,7 @@
 # Interest-Rate Risk and Asset-Liability Management for an Insurer
 
+[![tests](https://github.com/yelbakali-creator/insurer-alm-interest-rates/actions/workflows/tests.yml/badge.svg)](https://github.com/yelbakali-creator/insurer-alm-interest-rates/actions/workflows/tests.yml)
+
 A from-scratch Python study of interest-rate risk on real US Treasury data (8,055 daily curves, 1990-2022), applied to the balance sheet of a life insurer:
 
 1. **Curve construction**: bootstrapping a zero-coupon curve from par yields, then a Nelson-Siegel-Svensson (NSS) fit with flat-forward extrapolation beyond 30 years.
@@ -112,6 +114,7 @@ Lesson: a one-factor model is fine for market-consistent valuation (it passes th
 
 ```bash
 pip install -r requirements.txt
+python -m pytest       # 4 automated validation tests
 python run_study.py
 ```
 
