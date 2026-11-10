@@ -65,7 +65,9 @@ Liability convexity is 154. The assets are worth 110% of the liabilities, so a d
 | Slope | 15.0% | 10.6% | 2.7% | 2.6% / -2.5% |
 | Curvature | 2.7% | 0.9% | 0.8% | 0.8% / -0.7% |
 
-Shocks are on the factor scores, whose loadings have unit length across 8 tenors. Normal and empirical 1-in-200 shocks agree closely. The 1-in-200 surplus loss is obtained by simulating 20,000 combinations of the three factors and revaluing assets and liabilities.
+Shocks are on the factor scores, whose loadings have unit length across 8 tenors. Normal and empirical 1-in-200 shocks agree closely.
+
+**Approximation.** The PCA is estimated on changes in **par** yields (the published series), but the shocks are applied to the **zero-coupon** curve, interpolated across maturities and held flat beyond 10 years. For moves of this size, par and zero-rate changes are close, but not identical. The 1-in-200 surplus loss is obtained by simulating 20,000 combinations of the three factors and revaluing assets and liabilities.
 
 ## Model risk: single-factor vs multi-factor
 
@@ -79,6 +81,8 @@ Shocks are on the factor scores, whose loadings have unit length across 8 tenors
 The two models **rank the strategies differently**. In the one-factor Hull-White model, all rates move together, with shocks that fade with maturity, so the model cannot produce the independent slope moves that hurt the short portfolio most. The three-factor PCA captures them.
 
 Lesson: a one-factor model is fine for market-consistent valuation (it passes the martingale tests), but risk measurement needs at least the level and slope factors.
+
+**Caveat.** The one-year Hull-White distribution uses the risk-neutral dynamics fitted to today's curve (with a volatility estimated on history), not a real-world projection of rates. It illustrates how a one-factor structure shapes the risk, rather than giving a real-world 1-in-200 estimate.
 
 ## Method notes
 
